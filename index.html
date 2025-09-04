@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shivam Kumar | Portfolio</title>
+  <style>
+    :root{
+      --bg-1: #0a0b1a;
+      --bg-2: #0f1130;
+      --accent-1: #ff7bd5;
+      --accent-2: #7aa2ff;
+      --accent-3: #7effc1;
+      --ink: #eaf0ff;
+      --muted: #aeb6d9;
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px var(--border);
+    }
+
+    /* Base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color:var(--ink); background: radial-gradient(1200px 800px at 10% -20%, #21164a 0%, rgba(0,0,0,0) 60%),
+                        radial-gradient(1200px 800px at 110% 20%, #0e3a6c 0%, rgba(0,0,0,0) 60%),
+                        linear-gradient(120deg, var(--bg-1), var(--bg-2));
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+
+    /* Sparkly Sky */
+    .stars, .twinkles, .nebula{position:fixed; inset:0; pointer-events:none;}
+    .stars{background:radial-gradient(1px 1px at 10% 20%, #fff8, transparent 60%),
+                         radial-gradient(1px 1px at 70% 30%, #fff6, transparent 60%),
+                         radial-gradient(1px 1px at 40% 80%, #fff7, transparent 60%),
+                         radial-gradient(1px 1px at 90% 60%, #fff5, transparent 60%);
+           filter: drop-shadow(0 0 6px #c9e2ff);
+           animation: drift 120s linear infinite;
+    }
+    .twinkles{background:
+      radial-gradient(2px 2px at 20% 40%, #aefcff, transparent 50%),
+      radial-gradient(2px 2px at 80% 70%, #ffd0ff, transparent 50%),
+      radial-gradient(2px 2px at 50% 15%, #d1e2ff, transparent 50%);
+      mix-blend-mode: screen; opacity:.55; animation: float 40s ease-in-out infinite;
+    }
+    .nebula{background:
+      radial-gradient(600px 300px at 70% 20%, rgba(124, 77, 255, .15), transparent 60%),
+      radial-gradient(500px 250px at 20% 90%, rgba(0, 255, 199, .12), transparent 60%),
+      radial-gradient(700px 350px at 90% 70%, rgba(255, 118, 193, .10), transparent 60%);
+      filter:saturate(110%) blur(2px);
+    }
+    @keyframes drift{to{transform:translateY(100px)}}
+    @keyframes float{50%{transform:translateY(-20px) scale(1.02)}}
+
+    /* Sakura Petals */
+    .petals{position:fixed; inset:0; pointer-events:none; overflow:hidden}
+    .petals span{
+      position:absolute; top:-10vh; width:12px; height:8px; background:linear-gradient(135deg, #ffd3e6, #ff7bd5);
+      border-radius:60% 40% 60% 40%; filter:drop-shadow(0 0 6px #ffb3df);
+      opacity:.75; animation: fall linear infinite;
+    }
+    /* Generate a handful via CSS */
+    /* You can add/remove more for density */
+    .petals span:nth-child(1){left:5%; animation-duration:14s; animation-delay:0s}
+    .petals span:nth-child(2){left:15%; animation-duration:18s; animation-delay:2s}
+    .petals span:nth-child(3){left:28%; animation-duration:16s; animation-delay:4s}
+    .petals span:nth-child(4){left:40%; animation-duration:20s; animation-delay:1s}
+    .petals span:nth-child(5){left:52%; animation-duration:17s; animation-delay:3s}
+    .petals span:nth-child(6){left:63%; animation-duration:22s; animation-delay:0s}
+    .petals span:nth-child(7){left:74%; animation-duration:15s; animation-delay:5s}
+    .petals span:nth-child(8){left:86%; animation-duration:21s; animation-delay:2s}
+    .petals span:nth-child(9){left:94%; animation-duration:19s; animation-delay:6s}
+    .petals span:nth-child(10){left:35%; animation-duration:23s; animation-delay:3s}
+    @keyframes fall{
+      0%{transform:translate3d(0,-10vh,0) rotate(0deg)}
+      100%{transform:translate3d(0,110vh,0) rotate(360deg)}
+    }
+
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px); background:linear-gradient(180deg, rgba(10,11,26,.7), rgba(10,11,26,0)); border-bottom:1px solid var(--border)}
+    nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px}
+    .logo{
+      width:36px; height:36px; border-radius:12px; background: conic-gradient(from 0deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-1));
+      box-shadow:0 0 18px rgba(127,162,255,.6), 0 0 8px rgba(255,123,213,.8) inset;
+      position:relative; isolation:isolate;
+    }
+    .logo::after{content:"☆"; position:absolute; inset:0; display:grid; place-items:center; color:#0a0b1a; font-weight:900; text-shadow:none}
+    .navlinks{display:flex; gap:20px; font-size:.95rem}
+    .navlinks a{padding:8px 12px; border-radius:999px; border:1px solid transparent}
+    .navlinks a:hover{border-color:var(--border); background:var(--glass)}
+
+    /* Hero */
+    .hero{position:relative; padding:90px 0 70px; text-align:center}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border:1px solid var(--border); background:var(--glass); border-radius:999px; font-size:.85rem; color:var(--muted)}
+    .badge .dot{width:8px; height:8px; border-radius:50%; background:var(--accent-2); box-shadow:0 0 10px var(--accent-2)}
+    h1{font-size:clamp(2rem, 6vw, 4rem); margin:16px 0 8px; line-height:1.05; text-shadow:0 8px 30px rgba(122,162,255,.3)}
+    .gradient-text{background:linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .subtitle{color:var(--muted); font-size:clamp(1rem, 2.5vw, 1.25rem)}
+
+    .cta-row{display:flex; gap:14px; justify-content:center; margin-top:26px; flex-wrap:wrap}
+    .btn{padding:12px 18px; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+         box-shadow: var(--shadow); backdrop-filter: blur(8px); font-weight:600}
+    .btn:hover{transform:translateY(-2px)}
+
+    /* Sections */
+    section{padding:70px 0}
+    .section-title{display:flex; align-items:center; gap:12px; font-size:1.25rem; letter-spacing:.7px; color:var(--muted); margin-bottom:24px}
+    .section-title::before{content:""; width:28px; height:2px; background:linear-gradient(90deg, var(--accent-1), var(--accent-2))}
+
+    /* Cards */
+    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:18px}
+    .card{grid-column:span 12; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+          border:1px solid var(--border); border-radius:18px; padding:18px; box-shadow: var(--shadow)}
+    @media(min-width:700px){
+      .card.half{grid-column:span 6}
+      .card.third{grid-column:span 4}
+    }
+
+    .card h3{margin:6px 0 6px; font-size:1.15rem}
+    .card p{margin:0; color:var(--muted)}
+    .chiprow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .chip{font-size:.8rem; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.05)}
+
+    /* Footer */
+    footer{padding:50px 0 80px; color:var(--muted); text-align:center; border-top:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0))}
+    .footname{font-weight:800; letter-spacing:.5px}
+
+    /* Internal Anchor Offsets */
+    :target{scroll-margin-top:80px}
+  </style>
+</head>
+<body>
+  <!-- Ambient layers -->
+  <div class="nebula" aria-hidden="true"></div>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="twinkles" aria-hidden="true"></div>
+  <div class="petals" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>Shivam Kumar</div>
+        </div>
+        <div class="navlinks" role="navigation" aria-label="Main">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="badge"><span class="dot"></span> Anime-Themed Portfolio</div>
+        <h1>
+          Hi, I'm <span class="gradient-text">Shivam Kumar</span>
+        </h1>
+        <p class="subtitle">Aspiring <strong>Data Scientist</strong> & <strong>Game Developer</strong> — I love building playful experiences and insightful models.</p>
+        <div class="cta-row">
+          <a class="btn" href="#projects" role="button">See Projects</a>
+          <a class="btn" href="#contact" role="button">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">About Me</div>
+        <div class="grid">
+          <article class="card">
+            <h3>Who am I?</h3>
+            <p>
+              I'm Shivam Kumar. I completed my schooling at <strong>Raman Munjal Vidya Mandir</strong> and I'm currently pursuing college at <strong>Amity University, Haryana</strong>.
+              I have a passion for <strong>Data Science</strong> and <strong>Game Development</strong>. I enjoy turning ideas into interactive games and data into decisions.
+            </p>
+            <div class="chiprow" aria-label="interests">
+              <span class="chip">Anime Aesthetics</span>
+              <span class="chip">Neon UI</span>
+              <span class="chip">Clean Code</span>
+              <span class="chip">Math + Art</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">Projects</div>
+        <div class="grid">
+          <article class="card half">
+            <h3>🎮 Tic Tac Toe</h3>
+            <p>A classic 3x3 game with simple logic and clean UI. Built to practice control flow and state handling.</p>
+            <div class="chiprow">
+              <span class="chip">C++</span>
+              <span class="chip">Game Logic</span>
+              <span class="chip">CLI / Simple UI</span>
+            </div>
+          </article>
+
+          <article class="card half">
+            <h3>🪨📄✂️ Rock–Paper–Scissors</h3>
+            <p>Fast, replayable mini‑game. Focused on randomness, user input validation, and score tracking.</p>
+            <div class="chiprow">
+              <span class="chip">C++</span>
+              <span class="chip">Randomness</span>
+              <span class="chip">I/O</span>
+            </div>
+          </article>
+
+          <article class="card third">
+            <h3>📊 Data Exploration Starter</h3>
+            <p>A template I use to import CSVs, clean them, and chart quick insights. (Growing with each dataset!)</p>
+            <div class="chiprow">
+              <span class="chip">Python</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">EDA</span>
+            </div>
+          </article>
+
+          <article class="card third">
+            <h3>🧠 Learning Playground</h3>
+            <p>Small notebooks experimenting with algorithms, from search to simple ML models.</p>
+            <div class="chiprow">
+              <span class="chip">Python</span>
+              <span class="chip">Algorithms</span>
+              <span class="chip">ML Basics</span>
+            </div>
+          </article>
+
+          <article class="card third">
+            <h3>🛠️ Mini Tools</h3>
+            <p>Handy utilities I build for fun: timers, converters, and little web widgets.</p>
+            <div class="chiprow">
+              <span class="chip">HTML+CSS</span>
+              <span class="chip">Vanilla JS (soon)</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">Skills</div>
+        <div class="grid">
+          <article class="card third">
+            <h3>Languages</h3>
+            <p>C++, Python, SQL</p>
+            <div class="chiprow">
+              <span class="chip">OOP</span>
+              <span class="chip">DSA</span>
+            </div>
+          </article>
+
+          <article class="card third">
+            <h3>Data Science</h3>
+            <p>Data wrangling, EDA, basic ML models</p>
+            <div class="chiprow">
+              <span class="chip">Pandas</span>
+              <span class="chip">NumPy</span>
+              <span class="chip">Matplotlib</span>
+            </div>
+          </article>
+
+          <article class="card third">
+            <h3>Game Dev</h3>
+            <p>Logic design, game loops, input handling</p>
+            <div class="chiprow">
+              <span class="chip">C++</span>
+              <span class="chip">Prototyping</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">Contact</div>
+        <div class="grid">
+          <article class="card">
+            <h3>Let's Connect</h3>
+            <p>
+              This site uses no external links. Add your preferred contact details here (email, phone) or keep it minimal.
+            </p>
+            <div class="chiprow">
+              <span class="chip">Location: India</span>
+              <span class="chip">Open to projects</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footname">© <span>Shivam Kumar</span> • Anime vibes, clean code.</div>
+    </div>
+  </footer>
+</body>
+</html>
